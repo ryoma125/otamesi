@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #fff;
+  color: #000;
+}
+
+/* ===== ヘッダー ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  padding: 16px 40px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* --- ナビゲーションを横並びに --- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* --- 下線の代わりに左右の横線を表示 --- */
+.nav a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.nav a::before,
+.nav a::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background-color: #000;
+}
+
+.nav a::before {
+  margin-right: 6px;
+}
+
+.nav a::after {
+  margin-left: 6px;
+}
+
+
+/* ========== メイン ========== */
+.container {
+  display: flex;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+
+/* 左側 */
+.left-panel {
+  width: 40%;
+  border-right: 1px solid #ccc;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow: hidden; /* 固定 */
+}
+
+/* 右側（スクロール） */
+.right-panel {
+  width: 60%;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow-y: auto; /* ←右だけスクロール */
+}
+
+/* フォーム */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.postal-search {
+  display: flex;
+  gap: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+button {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+/* ========== ユーザーカード ========== */
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+.user-info p {
+  margin: 4px 0;
+}
+
+
