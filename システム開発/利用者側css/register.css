@@ -1,0 +1,111 @@
+/* 全体レイアウト */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #f8f9fc, #e6e9f0);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 左上固定ロゴ */
+h1 {
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  font-size: 28px;
+  color: #333;
+  margin: 0;
+}
+
+/* 中央配置コンテンツ */
+.container {
+  margin: auto;
+  text-align: center;
+  width: 350px;
+  
+}
+
+/* タイトル */
+h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* 入力欄 */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* 郵便番号入力＋ボタン横並び */
+.zip-container {
+  display: flex;
+  gap: 8px;
+}
+
+.zip-container input {
+  flex: 1;
+}
+
+.zip-container button {
+  white-space: nowrap;
+}
+
+/* 登録ボタン */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 15px;
+  font-size: 16px;
+  background-color: #f7b267;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #f79d5c;
+}
+
+/* 郵便番号検索ボタン */
+button[type="button"] {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #f7b267;
+  color:white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: #f79d5c;
+}
+
+/* ログイン画面へのリンク（中央下） */
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.login-link a {
+  text-decoration: none;
+  color: #f7a34b;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.login-link a:hover {
+  color: #f47b20;
+}
