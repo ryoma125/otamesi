@@ -1,4 +1,10 @@
-<?php session_start();
+<?php
+session_start();
+if (empty($_SESSION['admin_login'])) {
+    header('Location: admin_login.php');
+    exit;
+}
+$admin_name = $_SESSION['admin_name'] ? $_SESSION['admin_name'] : '○○';
 require "db-connect.php";
 $pdo = new PDO($connect, USER, PASS);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,25 +20,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $brand = $_POST["brand"];
     $size = $_POST["size"];
 
-    $image_url = "";
-    if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
-        $upload_dir = "uploads/";
-        if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
-        $file_name = uniqid() . "_" . basename($_FILES["image"]["name"]);
-        $target_path = $upload_dir . $file_name;
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_path)) {
-            $image_url = $target_path;
-        }
-    }
-
     try {
         if (!empty($name) && !empty($price) && !empty($shipping_fee) && !empty($stock) && !empty($code)) {
+            // Productテーブルに商品登録
             $stmt = $pdo->prepare("
                 INSERT INTO Product
-                (product_name, product_code, brand, size, image_url, price, stock, shipping_fee)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                (product_name, product_code, brand, size, price, stock, shipping_fee)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
             ");
-            $stmt->execute([$name, $code, $brand, $size, $image_url, $price, $stock, $shipping_fee]);
+            $stmt->execute([$name, $code, $brand, $size, $price, $stock, $shipping_fee]);
+            $product_id = $pdo->lastInsertId(); // 登録された商品のIDを取得
+
+            // 複数画像アップロード処理
+            if (!empty($_FILES["images"]["name"][0])) {
+                $upload_dir = "uploads/";
+                if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
+
+                foreach ($_FILES["images"]["tmp_name"] as $key => $tmp_name) {
+                    if ($_FILES["images"]["error"][$key] === UPLOAD_ERR_OK) {
+                        $file_name = uniqid() . "_" . basename($_FILES["images"]["name"][$key]);
+                        $target_path = $upload_dir . $file_name;
+                        move_uploaded_file($tmp_name, $target_path);
+
+                        // ProductImageテーブルに画像を登録
+                        $stmt = $pdo->prepare("INSERT INTO ProductImage (product_id, image_url) VALUES (?, ?)");
+                        $stmt->execute([$product_id, $target_path]);
+                    }
+                }
+            }
+
             $message = "商品を登録しました！";
         } else {
             $message = "未入力の項目があります。";
@@ -60,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <a href="admin_user.php">ユーザー削除</a>
       <a href="admin_sales.php">売上管理</a>
     </nav>
-    <div class="welcome">ようこそ！管理者さん！</div>
+    <div class="welcome">ようこそ！<?php echo htmlspecialchars($admin_name, ENT_QUOTES, 'UTF-8'); ?>さん！</div>
   </header>
 
   <main class="main">
@@ -90,7 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       <div class="form-row">
         <div class="upload-box">
-          <input type="file" name="image" accept="image/*" required>
+          <label>商品画像（複数可）</label>
+          <input type="file" name="images[]" accept="image/*" multiple required>
           <p>アップロード</p>
         </div>
 
@@ -111,20 +128,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="btn-wrap">
         <button type="submit">登録</button>
       </div>
+
       <div class="info-section">
-      <h3>商品コード定義</h3>
-      <div class="code-info">
-        <div class="left">
-          <p>カテゴリー カラー サイズ 素材</p>
-          <p><strong>例）SUM-BLA-26A-LEA</strong></p>
-          <p>夏　黒　26.5　レザー</p>
-        </div>
-        <div class="right">
-          <p>サイズの.5のサイズは〇〇Aと表記</p>
-          <p>カテゴリ、カラー、素材は<br>頭文字3文字を大文字表記</p>
+        <h3>商品コード定義</h3>
+        <div class="code-info">
+          <div class="left">
+            <p>カテゴリー カラー サイズ 素材</p>
+            <p><strong>例）SUM-BLA-26A-LEA</strong></p>
+            <p>夏　黒　26.5　レザー</p>
+          </div>
+          <div class="right">
+            <p>サイズの.5のサイズは〇〇Aと表記</p>
+            <p>カテゴリ、カラー、素材は<br>頭文字3文字を大文字表記</p>
+          </div>
         </div>
       </div>
-    </div>
     </form>
   </main>
 </body>

@@ -1,0 +1,49 @@
+body {
+    font-family: "Hiragino Sans", "Segoe UI", sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* ← この枠が中央のボックスに出る */
+.complete-container {
+    margin: 120px auto;
+    padding: 40px;
+    width: 420px;
+    background-color: #fff;
+    border: 3px solid #333; /* 枠線 */
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 見出しと本文の整え */
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* ボタン */
+.confirm-btn {
+    border: 1px solid #333;
+    background-color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.confirm-btn:hover {
+    background-color: #333;
+    color: white;
+}
