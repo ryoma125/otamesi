@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../usercss/login.css?v=<?php echo time(); ?>">
-  <title>ログイン画面 | Calçar</title>
-</head>
-<body>
-<?php
-session_start();
+<?php session_start();
 
-require '../db_connect.php';
-$pdo = connect();
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+require '../require/db-connect.php';
+$pdo = new PDO($connect, USER, PASS);
+
 
 // POST が来た時のみログイン処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_name'] = $user['name'];
 
                 // ★ ここを index.html に変更 ★
-                header('Location: index.html');
+                header('Location: index.php');
                 exit;
 
             } else {
@@ -46,7 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="login.css?v=<?php echo time(); ?>">
+  <title>ログイン画面 | Calçar</title>
+</head>
+<body>
 <h1>Calçar</h1>
 <div class="container">
 <h2>ログイン画面</h2>
