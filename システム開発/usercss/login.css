@@ -1,0 +1,103 @@
+/* 全体レイアウト */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f8f9fc, #e6e9f0);
+
+  /* 中央配置（縦横中央） */
+  display: flex;
+  align-items: center;      /* 縦方向中央寄せ */
+  justify-content: center;  /* 横方向中央寄せ */
+}
+
+/* 右上固定ロゴ（h1） */
+h1 {
+  position: fixed;
+  top: 20px;
+  left: 30px;     /* 右上に固定 */
+  font-size: 28px;
+  color: #333;
+  margin: 0;
+  z-index: 1000;   /* コンテンツより手前に出す（必要なら） */
+  pointer-events: none; /* ロゴがクリックを邪魔しないように（任意） */
+}
+
+/* 中央配置コンテンツ（カード風にして被りを防ぐ） */
+.container {
+  width: 350px;
+  max-width: 92%;
+  text-align: center;
+  box-sizing: border-box;
+
+  /* 見た目を整えつつロゴと被らないよう余白を取る */
+  padding: 36px 28px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(30, 40, 60, 0.08);
+
+  /* 余白確保（固定ヘッダと被らないための追加余裕） */
+  margin-top: 20px;
+}
+
+/* タイトル */
+h2 {
+  font-size: 22px;
+  margin: 0 0 20px 0;
+}
+
+/* 入力欄 */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #d6dbe6;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* ログインボタン */
+button {
+  width: 100%;
+  background-color: #f7b267;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #f79d5c;
+}
+
+/* 新規会員登録リンク（中央下） */
+.signup-link {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.signup-link a {
+  text-decoration: none;
+  color: #f7a34b;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.signup-link a:hover {
+  color: #f47b20;
+}
+
+/* エラーメッセージ */
+.error {
+  color: #c0392b;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: left;
+}

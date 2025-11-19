@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calçar</title>
+<link rel="stylesheet" href="osusume.css">
+<link rel="stylesheet" href="footer.css">
+</head>
+<body>
