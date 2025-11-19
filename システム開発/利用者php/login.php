@@ -9,7 +9,7 @@
 <?php
 session_start();
 
-require 'db_connect.php';
+require '../require.php/db_connect.php';
 $pdo = connect();
 
 // POST が来た時のみログイン処理
