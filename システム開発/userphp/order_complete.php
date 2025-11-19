@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db-connect.php';
+require '../db-connect.php';
 
 // ===== 注文処理などをここで実行 =====
 // 例）$payment = $_POST['payment_method'];

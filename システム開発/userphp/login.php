@@ -2,14 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="../利用者側css/login.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="../usercss/login.css?v=<?php echo time(); ?>">
   <title>ログイン画面 | Calçar</title>
 </head>
 <body>
 <?php
 session_start();
 
-require 'db_connect.php';
+require '../db_connect.php';
 $pdo = connect();
 
 // POST が来た時のみログイン処理

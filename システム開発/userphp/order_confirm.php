@@ -1,5 +1,5 @@
 <?php session_start();
- require 'db-connect.php'; 
+ require '../db-connect.php'; 
 $total = isset($_POST['total']) ? (int)$_POST['total'] : 0;
 ?>
 <!DOCTYPE html>

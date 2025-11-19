@@ -3,7 +3,7 @@
 session_start();
 
 // データベース接続用の関数を読み込む
-require_once 'db_connect.php';
+require_once '../db_connect.php';
 
 // データベースに接続
 $pdo = connect();
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../利用者側css/register.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="../usercss/register.css?v=<?php echo time(); ?>">
 <title>新規登録 | Calçar</title>
 <style>
 /* 簡易CSS */
