@@ -1,5 +1,5 @@
 <?php session_start();
- require '../db-connect.php'; 
+ require '../require.php/db-connect.php'; 
 $total = isset($_POST['total']) ? (int)$_POST['total'] : 0;
 ?>
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ $total = isset($_POST['total']) ? (int)$_POST['total'] : 0;
 <head>
     <meta charset="UTF-8">
     <title>購入確認</title>
-    <link rel="stylesheet" href="order_confirm.css">
+    <link rel="stylesheet" href="../usercss/order_confirm.css">
 </head>
 <body>
 <div class="modal">

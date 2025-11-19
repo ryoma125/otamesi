@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../db-connect.php';
+require '../require.php/db-connect.php';
 
 // ===== 注文処理などをここで実行 =====
 // 例）$payment = $_POST['payment_method'];
@@ -16,7 +16,7 @@ require '../db-connect.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>購入完了</title>
-    <link rel="stylesheet" href="order_complete.css">
+    <link rel="stylesheet" href="../usercss/order_complete.css">
 </head>
 <body>
     <div class="complete-container">

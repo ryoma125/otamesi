@@ -1,5 +1,5 @@
 <?php session_start();
-require_once '../db-connect.php';
+require_once '../require.php/db-connect.php';
 
 
 try {
@@ -28,7 +28,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <title><?= htmlspecialchars($product['product_name']) ?> | Calçar</title>
-  <link rel="stylesheet" href="product_detail.css">
+  <link rel="stylesheet" href="../usercss/product_detail.css">
 </head>
 <body>
   <header class="header">
