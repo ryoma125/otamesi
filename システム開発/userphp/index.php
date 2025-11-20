@@ -1,5 +1,5 @@
 <?php session_start(); 
-require '../db_connect.php';
+require '../db-connect.php';
 $pdo = connect();
 ?>
 <!DOCTYPE html>
