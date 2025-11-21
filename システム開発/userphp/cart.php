@@ -1,13 +1,13 @@
 <?php
 session_start();
-require "db-connect.php";
+require "../require.php/db-connect.php";
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 $user_id = $_SESSION['user_id']; // 仮のユーザーID
 
-$pdo = new PDO($connect, USER, PASS);
+$pdo = connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // ========================
@@ -53,8 +53,8 @@ foreach ($cart_items as $item) {
 <head>
   <meta charset="UTF-8">
   <title>カート画面 | Calçar</title>
-  <link rel="stylesheet" href="cart.css">
-  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="../usercss/cart.css">
+  <link rel="stylesheet" href="../require.css/navigation.css">
 </head>
 <body>
 
