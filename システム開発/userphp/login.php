@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../usercss/login.css?v=<?php echo time(); ?>">
-  <title>ログイン画面 | Calçar</title>
-</head>
-<body>
-<?php
-session_start();
-
-require '../require.php/db_connect.php';
-$pdo = connect();
-=======
 <?php session_start();
 
 error_reporting(E_ALL);
@@ -20,7 +5,6 @@ ini_set('display_errors', '1');
 require 'db-connect.php';
 $pdo = new PDO($connect, USER, PASS);
 
->>>>>>> 5f5fc3d0f08e135422df55fd85eb8a6750d7368e
 
 // POST が来た時のみログイン処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
