@@ -2,14 +2,9 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-require 'db-connect.php';
+require '../require.php/db-connect.php';
 $pdo = new PDO($connect, USER, PASS);
 
-<<<<<<< HEAD:システム開発/利用者php/login.php
-require '../require.php/db_connect.php';
-$pdo = connect();
-=======
->>>>>>> main:システム開発/userphp/login.php
 
 // POST が来た時のみログイン処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

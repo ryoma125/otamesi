@@ -3,11 +3,7 @@
 session_start();
 
 // データベース接続用の関数を読み込む
-<<<<<<< HEAD:システム開発/利用者php/register.php
-require_once '../require.php/db_connect.php';
-=======
 require_once '../require.php/db-connect.php';
->>>>>>> main:システム開発/userphp/register.php
 
 // データベースに接続
 $pdo = connect();
