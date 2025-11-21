@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calçar</title>
-    <link rel="stylesheet" href="index.style.css">
+    <link rel="stylesheet" href="../usercss/index.style.css">
 </head>
 <body>
 
-  <?php require 'navigation.php'; ?>
+  <?php require '../require.php/navigation.php'; ?>
   
 
   <main>
@@ -51,32 +51,31 @@
   </main>
 
   <!-- 下部テーマ部分 -->
-  <section class="recommend-section">
-    <div class="recommend-title">おすすめのテーマ</div>
- 
-    <div class="recommend-slider">
-      <div class="recommend-card">
-        <img src="img/cafe (2).png" alt="カフェにおすすめ">
-        <div class="text">カフェにおすすめ</div>
-      </div>
-      <div class="recommend-card">
-        <img src="img/flower.jpg" alt="雨におすすめ">
-        <div class="text">雨におすすめ</div>
-      </div>
-      <div class="recommend-card">
-        <img src="img/fuyu.png" alt="冬におすすめ">
-        <div class="text">冬におすすめ</div>
-      </div>
-      <div class="recommend-card">
-        <img src="img/autodoa.jpg" alt="アウトドアにおすすめ">
-        <div class="text">アウトドアにおすすめ</div>
-      </div>
-      <div class="recommend-card">
-        <img src="img/supotu.png" alt="スポーツにおすすめ">
-        <div class="text">スポーツにおすすめ</div>
-      </div>
-    </div>
-  </section>
+<section class="recommend-section">
+  <div class="recommend-title">おすすめのテーマ</div>
+
+  <div class="recommend-slider">
+    <?php
+    $themes = [
+      ["link" => "osusume-cafe.php", "img" => "img/cafe (2).png", "text" => "カフェにおすすめ"],
+      ["link" => "osusume-natu.php", "img" => "img/R.jpg", "text" => "夏におすすめ"],
+      ["link" => "osusume-fuyu.php", "img" => "img/fuyu.png", "text" => "冬におすすめ"],
+      ["link" => "osusume-autdoa.php", "img" => "img/autodoa.jpg", "text" => "アウトドアにおすすめ"],
+      ["link" => "osusume-supot.php", "img" => "img/supotu.png", "text" => "スポーツにおすすめ"],
+      ["link" => "osusume-ame.php", "img" => "img/flower.jpg", "text" => "雨におすすめ"]
+    ];
+
+     foreach ($themes as $theme) {
+      echo '<div class="recommend-card">';
+      echo '<a href="' . htmlspecialchars($theme["link"]) . '">';
+      echo '<img src="' . htmlspecialchars($theme["img"]) . '" alt="' . htmlspecialchars($theme["text"]) . '">';
+      echo '</a>';
+      echo '<div class="text">' . htmlspecialchars($theme["text"]) . '</div>';
+      echo '</div>';
+    }
+    ?>
+  </div>
+</section>
 
   <footer></footer>
 </body>
