@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 require '../require.php/db-connect.php';
-$pdo = connect();
+$pdo = new PDO($connect, USER, PASS);
 
 
 // POST が来た時のみログイン処理
